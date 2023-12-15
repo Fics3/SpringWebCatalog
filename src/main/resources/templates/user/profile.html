@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div>
+    <h2>Your Profile</h2>
+    <div th:if="${customUser != null}">
+        <p>Username: <span th:text="${customUser.username}"></span></p>
+        <p>Role: <span th:text="${customUser.role}"></span></p>
+        <p>Firstname: <span th:text="${customUser.firstname}"></span></p>
+        <p>Lastname: <span th:text="${customUser.lastname}"></span></p>
+        <p>Email: <span th:text="${customUser.email}"></span></p>
+        <div th:if="${customUser.role.name() == 'SELLER'}">
+            <form action="/new" method="get">
+                <button type="submit">Add product</button>
+            </form>
+            <button class="collapsible" type="button">Your products</button>
+            <div class="content" style="display:none;">
+                <ul>
+                    <li th:each="product : ${userProducts}" th:if="${product.isAvailable()}">
+                        <img th:src="@{/images/{uuid}(uuid=${product.uuid})}" width="200" height="200"
+                             alt="Product Image">
+                        <span th:text="${product.name}"></span> -
+                        <span th:text="${product.price}"></span> $
+                        <span th:text="${product.count}"></span> remained
+                        <form th:action="@{'/profile/delete/' + ${product.uuid}}" method="post"
+                              style="display: inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                        <form th:action="@{'/profile/' + ${product.uuid}}" method="get" style="display: inline;">
+                            <button type="submit">Edit</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div>
+            <button class="collapsible" type="button">Your Purchases</button>
+            <div th:if="${purchased != null}" class="purchases" style="display: none">
+                <ul>
+                    <li th:each="purchase : ${purchased}">
+                        <img th:src="@{/images/{uuid}(uuid=${purchase.product.uuid})}" width="200" height="200"
+                             alt="Product Image">
+                        <span th:text="${purchase.product.name}"></span> -
+                        <span th:text="${purchase.product.price}"></span> $
+                        <span th:text="${purchase.quantity}"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div th:if="${customUser == null}">
+        <p>User not found</p>
+    </div>
+</div>
+<script>
+    let coll = document.getElementsByClassName("collapsible");
+    let i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            let content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+
+</script>
+
+</body>
+</html>

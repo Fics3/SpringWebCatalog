@@ -1,0 +1,30 @@
+<!-- common-layout.html (или любое другое имя, которое вы выберете) -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Online Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Spring web catalog</h1>
+<nav>
+    <div th:if="${loggedIn}">
+        <button onclick="window.location.href='/'">Home</button>
+        <button onclick="window.location.href='/cart'">Cart</button>
+        <button onclick="window.location.href='/profile'"><span th:text="${username}"></span></button>
+        <button onclick="window.location.href='/logout'">Logout</button>
+    </div>
+    <div th:unless="${loggedIn}">
+        <button onclick="window.location.href='/'">Home</button>
+        <button onclick="window.location.href='/cart'">Cart</button>
+        <button onclick="window.location.href='/login'">Login</button>
+        <button onclick="window.location.href='/registration'">Registration</button>
+    </div>
+</nav>
+
+
+<div th:replace="~{${contentTemplate}}"></div>
+</body>
+</html>

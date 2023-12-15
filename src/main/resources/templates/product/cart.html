@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+<div>
+    <h2>Your Cart</h2>
+
+    <form th:action="@{/cart/update}" method="post" th:object="${userCart}">
+        <table border="1">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+
+            <tr th:each="item, rowStat : ${userCart.getUserCart()}">
+                <td th:text="${item.product.name}"></td>
+                <td th:text="${item.product.price}"></td>
+                <td>
+                    <input type="hidden" th:field="*{userCart[__${rowStat.index}__].product}"
+                           th:value="${item.product}"/>
+                    <label>
+                        <input type="text" th:field="*{userCart[__${rowStat.index}__].quantity}" min="1"
+                               th:value="${item.quantity}"
+                               required pattern="[0-9]+([.,][0-9]+)?"/>
+                    </label>
+                </td>
+                <td th:text="${item.getTotal()}"></td>
+            </tr>
+        </table>
+
+        <button type="submit">Update Cart</button>
+    </form>
+
+    <form th:action="@{/cart/buy}" method="post">
+        <button type="submit">Buy</button>
+    </form>
+
+    <p>Total: <span th:text="${userCartTotal}"></span></p>
+
+</div>
+</body>
+</html>
