@@ -1,10 +1,9 @@
-package org.example.springwebcatalog.Model;
+package org.example.springwebcatalog.Model.Product;
 
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.springwebcatalog.Model.Product.Product;
 
 import java.util.UUID;
 
@@ -16,7 +15,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 

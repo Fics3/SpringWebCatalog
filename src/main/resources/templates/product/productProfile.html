@@ -8,11 +8,12 @@
 </head>
 <body>
 <div>
-<!-- Вывод информации о продукте -->
-<h2 th:text="${product.name}">Product Name</h2>
+    <!-- Вывод информации о продукте -->
+    <h2 th:text="${product.name}">Product Name</h2>
     <img th:src="@{/images/{uuid}(uuid=${product.uuid})}" width="200" height="200" alt="Product Image">
-    <p th:text="${product.description}">Product Description</p>
-    <p th:text="${product.price}">Product Price</p>
+    <p>Description: <span th:text="${product.description}">Product Description</span></p>
+    <p>Price: <span th:text="${product.price}">Product price</span>$</p>
+    <p>Lasts: <span th:text="${product.count}"></span> </p>
 
     <!-- Форма для добавления в корзину -->
     <form th:action="@{'/add/' + ${product.uuid}}" method="post">
@@ -23,16 +24,13 @@
     </form>
 
     <h2>Product Reviews</h2>
+    Average rating: <span th:text="${avgRating}"></span>/5
     <ul>
-        Средний рейтинг товара: <span th:text="${avgRating}"></span>
         <br>
         <li th:each="review : ${product.reviewList}">
-            Автор: <span th:text="${review.username}"></span>
-            <br>
-            Комментарий: <span th:text="${review.comment}"></span>
-            <br>
-            Оценка: <span th:text="${review.rating}"></span>
-            <br>
+            <p>Author: <span th:text="${review.username}"></span></p>
+            <p>Comment: <span th:text="${review.comment}"></span></p>
+            <p>Rating: <span th:text="${review.rating}"></span></p>
         </li>
     </ul>
 

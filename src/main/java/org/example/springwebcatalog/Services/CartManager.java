@@ -1,12 +1,12 @@
 package org.example.springwebcatalog.Services;
 
 import jakarta.transaction.Transactional;
+import org.example.springwebcatalog.Mapper.CartItemRepository;
+import org.example.springwebcatalog.Mapper.PurchasedItemRepository;
 import org.example.springwebcatalog.Model.Product.Product;
 import org.example.springwebcatalog.Model.User.CustomUser;
 import org.example.springwebcatalog.Model.User.UserProducts.CartItem;
-import org.example.springwebcatalog.Mapper.CartItemRepository;
 import org.example.springwebcatalog.Model.User.UserProducts.PurchasedItem;
-import org.example.springwebcatalog.Mapper.PurchasedItemRepository;
 import org.example.springwebcatalog.Services.ServiceInterfaces.CartService;
 import org.springframework.stereotype.Service;
 
@@ -83,7 +83,10 @@ public class CartManager implements CartService {
     }
 
     private PurchasedItem buyItem(CartItem cartItem, CustomUser customUser) {
-        return new PurchasedItem(customUser, cartItem.getProduct(), cartItem.getQuantity());
+        return new PurchasedItem(customUser,
+                cartItem.getProduct(),
+                Math.min(cartItem.getProduct().getCount(),
+                cartItem.getQuantity()));
     }
 
     private void reduceProductCount(CartItem cartItem, PurchasedItem purchasedItem) {

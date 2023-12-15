@@ -6,7 +6,7 @@ import lombok.Setter;
 import org.example.springwebcatalog.Model.Product.Product;
 import org.example.springwebcatalog.Model.User.CustomUser;
 
-import java.util.List;
+import java.util.UUID;
 
 
 @Entity
@@ -16,8 +16,8 @@ import java.util.List;
 public class CartItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

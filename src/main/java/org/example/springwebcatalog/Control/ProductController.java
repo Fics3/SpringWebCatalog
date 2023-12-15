@@ -2,7 +2,7 @@ package org.example.springwebcatalog.Control;
 
 import jakarta.transaction.Transactional;
 import org.example.springwebcatalog.Model.Product.Product;
-import org.example.springwebcatalog.Model.Review;
+import org.example.springwebcatalog.Model.Product.Review;
 import org.example.springwebcatalog.Services.ServiceInterfaces.ProductService;
 import org.example.springwebcatalog.Services.ServiceInterfaces.ReviewService;
 import org.springframework.stereotype.Controller;
@@ -42,9 +42,11 @@ public class ProductController {
     }
 
     @PostMapping("/product/{id}/addReview")
+    @Transactional
     public String addReview(@PathVariable UUID id, @ModelAttribute("newReview") Review newReview) {
         Product product = productService.getProductById(id);
         newReview.setProduct(product);
+        product.addReview(newReview);
         reviewService.saveReview(newReview);
 
         return "redirect:/product/" + id;
@@ -89,7 +91,7 @@ public class ProductController {
 
 
     private void addAttributes(Model model, String title, Principal principal, String customTemplate) {
-        model.addAttribute("pageTitle", "Main page");
+        model.addAttribute("pageTitle", title);
         if (principal != null) {
             model.addAttribute("loggedIn", true);
             model.addAttribute("username", principal.getName());

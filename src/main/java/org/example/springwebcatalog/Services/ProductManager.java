@@ -4,11 +4,9 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.example.springwebcatalog.Mapper.ProductRepository;
 import org.example.springwebcatalog.Model.Product.Product;
-import org.example.springwebcatalog.Model.Review;
+import org.example.springwebcatalog.Model.Product.Review;
 import org.example.springwebcatalog.Model.User.CustomUser;
 import org.example.springwebcatalog.Services.ServiceInterfaces.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -16,12 +14,9 @@ import java.util.*;
 @Service
 public class ProductManager implements ProductService {
 
-    @Value("upload.dir")
-    private static final String IMAGE_REPOSITORY = "src/main/resources/static/productImages";
 
     private final ProductRepository productRepository;
 
-    @Autowired
     public ProductManager(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
@@ -42,6 +37,7 @@ public class ProductManager implements ProductService {
     }
 
     @Override
+    @Transactional
     public void editProduct(Product product) {
         Optional<Product> existingProductOptional = productRepository.findById(product.getUuid());
 
@@ -67,21 +63,18 @@ public class ProductManager implements ProductService {
 
     @Override
     @Transactional
-    public void addProduct(Product product) {
-        productRepository.save(product);
-    }
-
-    @Override
     public List<Product> getProductByCustomUser(CustomUser customUser) {
         return productRepository.findProductBySeller(customUser);
     }
 
     @Override
+    @Transactional
     public List<Product> findProducts(String query) {
         if (query == null || query.isEmpty()) {
             return Collections.emptyList();
         }
-        return productRepository.findProductByNameContaining(query);
+        var result = productRepository.findProductByNameContaining(query);
+        return result.isEmpty() ? productRepository.findByTags(query) : result;
     }
 
     @Override
@@ -102,6 +95,7 @@ public class ProductManager implements ProductService {
 
         return Math.round(avgRating * 10.0) / 10.0;
     }
+
 
     private Comparator<Product> getComparator(String sortField, String sortOrder) {
         Comparator<Product> productComparator;

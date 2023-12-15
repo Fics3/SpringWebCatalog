@@ -1,7 +1,7 @@
 package org.example.springwebcatalog.Mapper;
 
 import org.example.springwebcatalog.Model.Product.Product;
-import org.example.springwebcatalog.Model.Review;
+import org.example.springwebcatalog.Model.Product.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

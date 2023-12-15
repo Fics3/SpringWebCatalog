@@ -18,8 +18,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @Slf4j
 class SecurityConfig {
 
-    @Autowired
-    private UserManager userManager;
+    private final UserManager userManager;
+
+    public SecurityConfig(UserManager userManager) {
+        this.userManager = userManager;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {

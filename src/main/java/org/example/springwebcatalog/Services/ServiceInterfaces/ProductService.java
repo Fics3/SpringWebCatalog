@@ -14,11 +14,7 @@ public interface ProductService {
 
     void saveProduct(Product product);
 
-    void editProduct(Product product);
-
     void deleteProduct(UUID uuid);
-
-    void addProduct(Product product);
 
     List<Product> getProductByCustomUser(CustomUser customUser);
 
@@ -27,6 +23,7 @@ public interface ProductService {
     List<Product> sortProducts(List<Product> products, String sortField, String sortOrder);
 
     double getAverageRating(Product product);
+
 
 
 }

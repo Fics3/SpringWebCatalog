@@ -1,9 +1,7 @@
 /* style.css */
 
-/* Ваш CSS файл */
-
 body {
-    font-family: 'Comic-sans', sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f8f8f8;
@@ -22,16 +20,17 @@ ul {
 }
 
 li {
-    width: 25%; /* Устанавливаем ширину элемента на 25%, чтобы создать 4 элемента в ряду */
+    width: 25%;
     padding: 10px;
     box-sizing: border-box;
-    text-align: center; /* Центрируем содержимое элемента */
+    text-align: center;
 }
 
 li img {
     width: 100%;
-    height: 150px; /* Фиксированная высота для всех изображений */
-    object-fit: cover; /* Заполняем контейнер сохраняя пропорции */
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px; /* Added border radius for a rounded image appearance */
 }
 
 li a {
@@ -43,26 +42,25 @@ li form {
     margin-top: 10px;
 }
 
-/* Остальные стили, если необходимо */
-
 nav {
-    background-color: #e44d72; /* бледнорозовый цвет для навигации */
+    background-color: #e44d72;
     padding: 10px;
     text-align: center;
 }
 
 nav button {
-    background-color: #f06292; /* более насыщенный бледнорозовый цвет для кнопок */
+    background-color: #f06292;
     color: #fff;
     border: none;
     padding: 10px 20px;
     margin: 5px;
     cursor: pointer;
     font-size: 16px;
+    border-radius: 5px; /* Added border radius for rounded corners */
 }
 
 nav button:hover {
-    background-color: #ec407a; /* измененный цвет при наведении */
+    background-color: #ec407a;
 }
 
 div {
@@ -71,20 +69,22 @@ div {
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Added border radius for rounded corners */
 }
 
 div button {
-    background-color: #e44d72; /* бледнорозовый цвет для дополнительных кнопок */
+    background-color: #e44d72;
     color: #fff;
     border: none;
     padding: 10px 20px;
     margin: 5px;
     cursor: pointer;
     font-size: 16px;
+    border-radius: 5px;
 }
 
 div button:hover {
-    background-color: #ec407a; /* измененный цвет при наведении */
+    background-color: #ec407a;
 }
 
 table {
@@ -105,4 +105,12 @@ th {
 
 tr:hover {
     background-color: #f5f5f5;
+}
+li span {
+    word-wrap: break-word;
+}
+
+div p {
+    max-width: 100%;
+    overflow-wrap: break-word;
 }

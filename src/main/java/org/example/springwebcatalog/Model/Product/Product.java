@@ -3,11 +3,9 @@ package org.example.springwebcatalog.Model.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.springwebcatalog.Model.Review;
 import org.example.springwebcatalog.Model.User.CustomUser;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Getter
@@ -29,10 +27,19 @@ public class Product {
     private CustomUser seller;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Review> reviewList;
+    private List<Review> reviewList = new ArrayList<>();
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "product_tags",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private Set<Tag> tags = new HashSet<>();
 
     public Product() {
         uuid = UUID.randomUUID();
@@ -43,9 +50,13 @@ public class Product {
         this.name = name;
         this.description = description;
         this.price = price;
-        uuid = UUID.randomUUID();
         this.count = count;
         available = true;
+    }
+
+    public void addReview(Review review) {
+        reviewList.add(review);
+        review.setProduct(this);
     }
 
 }

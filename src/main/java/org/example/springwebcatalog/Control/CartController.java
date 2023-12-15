@@ -86,7 +86,7 @@ public class CartController {
     }
 
     @PostMapping("/cart/buy")
-    public String buyCart(Principal principal, Model model) {
+    public String buyCart(Principal principal) {
         CustomUser customUser = userService.findUserByName(principal.getName());
         var userCart = customUser.getCartItems();
 

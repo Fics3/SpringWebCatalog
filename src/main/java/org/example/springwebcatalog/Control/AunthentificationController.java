@@ -4,7 +4,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.example.springwebcatalog.Model.User.CustomUser;
 import org.example.springwebcatalog.Model.User.Role;
 import org.example.springwebcatalog.Services.ServiceInterfaces.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +22,7 @@ public class AunthentificationController {
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("custom-user", new CustomUser());
-        addTemplate("/user/registration", "Registration", model);
+        addTemplate("user/registration", "Registration", model);
         return "interface";
     }
 

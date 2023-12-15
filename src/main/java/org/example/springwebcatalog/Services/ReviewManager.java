@@ -1,8 +1,9 @@
 package org.example.springwebcatalog.Services;
 
+import jakarta.transaction.Transactional;
 import org.example.springwebcatalog.Mapper.ReviewRepository;
 import org.example.springwebcatalog.Model.Product.Product;
-import org.example.springwebcatalog.Model.Review;
+import org.example.springwebcatalog.Model.Product.Review;
 import org.example.springwebcatalog.Services.ServiceInterfaces.ReviewService;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +18,8 @@ public class ReviewManager implements ReviewService {
         this.reviewRepository = reviewRepository;
     }
 
-
-    public List<Review> getReviewsByProduct(Product product) {
-        return reviewRepository.findReviewByProduct(product);
-    }
-
+    @Override
+    @Transactional
     public void saveReview(Review review) {
         reviewRepository.save(review);
     }
