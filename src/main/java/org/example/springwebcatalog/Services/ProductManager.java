@@ -1,6 +1,5 @@
 package org.example.springwebcatalog.Services;
 
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.example.springwebcatalog.Mapper.ProductRepository;
 import org.example.springwebcatalog.Model.Product.Product;
@@ -9,7 +8,10 @@ import org.example.springwebcatalog.Model.User.CustomUser;
 import org.example.springwebcatalog.Services.ServiceInterfaces.ProductService;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ProductManager implements ProductService {
@@ -36,23 +38,6 @@ public class ProductManager implements ProductService {
         productRepository.save(product);
     }
 
-    @Override
-    @Transactional
-    public void editProduct(Product product) {
-        Optional<Product> existingProductOptional = productRepository.findById(product.getUuid());
-
-        if (existingProductOptional.isPresent()) {
-            Product existingProduct = existingProductOptional.get();
-            existingProduct.setName(product.getName());
-            existingProduct.setDescription(product.getDescription());
-            existingProduct.setPrice(product.getPrice());
-            existingProduct.setCount(product.getCount());
-
-            productRepository.save(existingProduct);
-        } else {
-            throw new EntityNotFoundException("Product not found with ID: " + product.getUuid());
-        }
-    }
 
     @Override
     public void deleteProduct(UUID uuid) {
