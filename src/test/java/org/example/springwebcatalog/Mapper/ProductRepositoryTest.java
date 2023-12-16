@@ -1,7 +1,6 @@
 package org.example.springwebcatalog.Mapper;
 
 import org.example.springwebcatalog.Model.Product.Product;
-import org.example.springwebcatalog.Model.User.CustomUser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +59,7 @@ public class ProductRepositoryTest {
         productRepository.saveAll(List.of(product1, product2));
 
         // Act
-        List<Product> foundProducts = productRepository.findByTags("tag1"+"tag2");
+        List<Product> foundProducts = productRepository.findByTags("tag1" + "tag2");
 
         // Assert
         assertThat(foundProducts.size()).isZero();
