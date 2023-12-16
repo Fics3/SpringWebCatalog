@@ -1,6 +1,6 @@
 package org.example.springwebcatalog.Services;
 
-import org.example.springwebcatalog.Mapper.TagRepository;
+import org.example.springwebcatalog.Repositories.TagRepository;
 import org.example.springwebcatalog.Model.Product.Tag;
 import org.example.springwebcatalog.Services.ServiceInterfaces.TagService;
 import org.springframework.stereotype.Service;

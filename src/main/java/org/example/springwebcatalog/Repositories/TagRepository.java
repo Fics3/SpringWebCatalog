@@ -1,4 +1,4 @@
-package org.example.springwebcatalog.Mapper;
+package org.example.springwebcatalog.Repositories;
 
 import org.example.springwebcatalog.Model.Product.Tag;
 import org.springframework.data.jpa.repository.JpaRepository;

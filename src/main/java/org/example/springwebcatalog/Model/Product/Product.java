@@ -1,6 +1,7 @@
 package org.example.springwebcatalog.Model.Product;
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.springwebcatalog.Model.User.CustomUser;
@@ -10,6 +11,7 @@ import java.util.*;
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = false)
 public class Product {
 
     private String name;
@@ -42,7 +44,6 @@ public class Product {
     private Set<Tag> tags = new HashSet<>();
 
     public Product() {
-        uuid = UUID.randomUUID();
         available = true;
     }
 

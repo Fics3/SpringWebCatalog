@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 
@@ -82,13 +81,6 @@ public class ProductController {
 
         return "interface";
     }
-
-    @ModelAttribute("allCategories")
-    public Set<String> populateCategories() {
-        // Здесь вы можете получить категории из базы данных или установить их вручную
-        return Set.of("Electronics", "Clothing", "Books");
-    }
-
 
     private void addAttributes(Model model, String title, Principal principal, String customTemplate) {
         model.addAttribute("pageTitle", title);

@@ -1,6 +1,6 @@
 package org.example.springwebcatalog.Control;
 
-import org.example.springwebcatalog.Mapper.ProductRepository;
+import org.example.springwebcatalog.Repositories.ProductRepository;
 import org.example.springwebcatalog.Model.Product.Product;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

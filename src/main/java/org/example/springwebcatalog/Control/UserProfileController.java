@@ -48,7 +48,6 @@ public class UserProfileController {
         model.addAttribute("purchased", customUser.getPurchasedItems());
         addTemplate(customUser, "user/profile", "Your profile", model);
 
-
         return "interface";
     }
 

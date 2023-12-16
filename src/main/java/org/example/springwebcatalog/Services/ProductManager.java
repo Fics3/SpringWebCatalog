@@ -1,7 +1,7 @@
 package org.example.springwebcatalog.Services;
 
 import jakarta.transaction.Transactional;
-import org.example.springwebcatalog.Mapper.ProductRepository;
+import org.example.springwebcatalog.Repositories.ProductRepository;
 import org.example.springwebcatalog.Model.Product.Product;
 import org.example.springwebcatalog.Model.Product.Review;
 import org.example.springwebcatalog.Model.User.CustomUser;
@@ -15,7 +15,6 @@ import java.util.UUID;
 
 @Service
 public class ProductManager implements ProductService {
-
 
     private final ProductRepository productRepository;
 

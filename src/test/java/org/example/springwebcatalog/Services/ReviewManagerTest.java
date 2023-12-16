@@ -1,6 +1,6 @@
 package org.example.springwebcatalog.Services;
 
-import org.example.springwebcatalog.Mapper.ReviewRepository;
+import org.example.springwebcatalog.Repositories.ReviewRepository;
 import org.example.springwebcatalog.Model.Product.Review;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

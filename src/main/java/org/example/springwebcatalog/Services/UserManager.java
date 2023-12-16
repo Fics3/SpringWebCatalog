@@ -1,11 +1,10 @@
 package org.example.springwebcatalog.Services;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.example.springwebcatalog.Mapper.UserRepository;
+import org.example.springwebcatalog.Repositories.UserRepository;
 import org.example.springwebcatalog.Model.User.CustomUser;
 import org.example.springwebcatalog.Model.User.Role;
 import org.example.springwebcatalog.Services.ServiceInterfaces.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserManager implements UserService {
 
-    @Autowired
     private UserRepository users;
 
     @Override

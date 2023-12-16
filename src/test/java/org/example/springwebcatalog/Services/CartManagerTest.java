@@ -1,7 +1,7 @@
 package org.example.springwebcatalog.Services;
 
-import org.example.springwebcatalog.Mapper.CartItemRepository;
-import org.example.springwebcatalog.Mapper.PurchasedItemRepository;
+import org.example.springwebcatalog.Repositories.CartItemRepository;
+import org.example.springwebcatalog.Repositories.PurchasedItemRepository;
 import org.example.springwebcatalog.Model.Product.Product;
 import org.example.springwebcatalog.Model.User.CustomUser;
 import org.example.springwebcatalog.Model.User.Role;

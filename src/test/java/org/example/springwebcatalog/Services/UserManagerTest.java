@@ -1,6 +1,6 @@
 package org.example.springwebcatalog.Services;
 
-import org.example.springwebcatalog.Mapper.UserRepository;
+import org.example.springwebcatalog.Repositories.UserRepository;
 import org.example.springwebcatalog.Model.User.CustomUser;
 import org.example.springwebcatalog.Model.User.Role;
 import org.junit.jupiter.api.BeforeEach;
