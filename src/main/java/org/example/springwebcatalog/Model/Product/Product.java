@@ -54,6 +54,19 @@ public class Product {
         available = true;
     }
 
+    //TEST
+    public Product(UUID uuid, String name, double price) {
+        this.uuid = uuid;
+        this.name = name;
+        this.price = price;
+    }
+
+    public Product(String product1, double v, int count) {
+        this.name = product1;
+        this.price = v;
+        this.count = count;
+    }
+
     public void addReview(Review review) {
         reviewList.add(review);
         review.setProduct(this);

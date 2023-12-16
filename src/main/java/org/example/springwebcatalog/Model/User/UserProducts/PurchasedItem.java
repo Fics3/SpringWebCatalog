@@ -12,20 +12,16 @@ import java.util.UUID;
 @Setter
 @Entity
 public class PurchasedItem {
+    int quantity;
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private CustomUser customUser;
-
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-
-
-    int quantity;
 
     public PurchasedItem(CustomUser customUser, Product product, int quantity) {
         this.customUser = customUser;

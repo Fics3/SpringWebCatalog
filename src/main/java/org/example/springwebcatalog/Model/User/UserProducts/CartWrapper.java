@@ -2,7 +2,6 @@ package org.example.springwebcatalog.Model.User.UserProducts;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.example.springwebcatalog.Model.User.UserProducts.CartItem;
 
 import java.util.List;
 

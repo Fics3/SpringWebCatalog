@@ -11,13 +11,13 @@
 <h1>Spring web catalog</h1>
 <nav>
     <div th:if="${loggedIn}">
-        <button onclick="window.location.href='/'">Home</button>
+        <button onclick="window.location.href='/'">Catalog</button>
         <button onclick="window.location.href='/cart'">Cart</button>
         <button onclick="window.location.href='/profile'"><span th:text="${username}"></span></button>
         <button onclick="window.location.href='/logout'">Logout</button>
     </div>
     <div th:unless="${loggedIn}">
-        <button onclick="window.location.href='/'">Home</button>
+        <button onclick="window.location.href='/'">Catalog</button>
         <button onclick="window.location.href='/cart'">Cart</button>
         <button onclick="window.location.href='/login'">Login</button>
         <button onclick="window.location.href='/registration'">Registration</button>

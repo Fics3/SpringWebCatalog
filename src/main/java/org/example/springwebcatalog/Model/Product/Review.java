@@ -22,4 +22,12 @@ public class Review {
     private String username;
     private String comment;
     private int rating;
+
+    public Review(int i) {
+        rating = i;
+    }
+
+    public Review() {
+
+    }
 }

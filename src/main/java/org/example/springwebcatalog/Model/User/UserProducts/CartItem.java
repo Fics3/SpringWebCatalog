@@ -28,9 +28,6 @@ public class CartItem {
     private Product product;
 
 
-//    @OneToMany(mappedBy = "cartItem")
-//    private List<PurchasedItem> purchasedItems;
-
     private int quantity;
 
     public CartItem() {

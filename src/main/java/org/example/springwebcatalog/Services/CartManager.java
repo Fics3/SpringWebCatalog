@@ -86,7 +86,7 @@ public class CartManager implements CartService {
         return new PurchasedItem(customUser,
                 cartItem.getProduct(),
                 Math.min(cartItem.getProduct().getCount(),
-                cartItem.getQuantity()));
+                        cartItem.getQuantity()));
     }
 
     private void reduceProductCount(CartItem cartItem, PurchasedItem purchasedItem) {

@@ -1,9 +1,9 @@
 package org.example.springwebcatalog.Services;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.example.springwebcatalog.Mapper.UserRepository;
 import org.example.springwebcatalog.Model.User.CustomUser;
 import org.example.springwebcatalog.Model.User.Role;
-import org.example.springwebcatalog.Mapper.UserRepository;
 import org.example.springwebcatalog.Services.ServiceInterfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

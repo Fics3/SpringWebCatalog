@@ -2,7 +2,6 @@ package org.example.springwebcatalog.Mapper;
 
 
 import org.example.springwebcatalog.Model.Product.Product;
-import org.example.springwebcatalog.Model.Product.Tag;
 import org.example.springwebcatalog.Model.User.CustomUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

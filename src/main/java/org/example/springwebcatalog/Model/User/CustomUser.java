@@ -43,6 +43,16 @@ public class CustomUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    public CustomUser(String testuser, String password, Role role) {
+        this.username = testuser;
+        this.password = password;
+        this.role = role;
+    }
+
+    public CustomUser() {
+
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(role);

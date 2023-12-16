@@ -25,5 +25,4 @@ public interface ProductService {
     double getAverageRating(Product product);
 
 
-
 }

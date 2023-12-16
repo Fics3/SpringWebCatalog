@@ -20,14 +20,14 @@ public class AunthentificationController {
     }
 
     @GetMapping("/registration")
-    public String registration(Model model) {
+    public String getRegistrationPage(Model model) {
         model.addAttribute("custom-user", new CustomUser());
         addTemplate("user/registration", "Registration", model);
         return "interface";
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("custom-user") CustomUser user, Role role) {
+    public String registerUser(@ModelAttribute("custom-user") CustomUser user, Role role) {
         userService.registerUser(user, role);
         return "redirect:/login";
     }
